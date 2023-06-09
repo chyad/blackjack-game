@@ -8,14 +8,10 @@
 using namespace std;
 
 /*
-void draw();
-
-bool newgame(char b);
-
-void killscreen();    // blackjack = 30 * five cards = 50
+void killscreen();
 */
 
-int p_ace, d_ace =0;
+int p_ace, d_ace =0;  // ace counter
 
 
 
@@ -45,6 +41,7 @@ bool rematch();
 int main() {
 
   string cushion;
+  
   std::random_device rd;
   auto rng = std::default_random_engine { rd() };
 
@@ -310,6 +307,7 @@ int main() {
 }
 
 
+/* ----------------------------------------------------------------------- */
 
 
 void init_card(vector<int>& pool, vector<int>& d, vector<int>& p){
@@ -343,6 +341,7 @@ void init_card(vector<int>& pool, vector<int>& d, vector<int>& p){
   return;
 }
 
+
 void draw(vector<int>& pool, vector<int>& p, int n){
 
   p.push_back(pool[0]);
@@ -366,6 +365,7 @@ void draw(vector<int>& pool, vector<int>& p, int n){
 
 }
 
+
 bool ask_player(){
   char n = '0';
 
@@ -376,6 +376,7 @@ bool ask_player(){
 
   return (n == 'y') ? true : false;
 }
+
 
 int point_count(vector<int> card){
 
@@ -391,6 +392,7 @@ int point_count(vector<int> card){
   }
   return count;
 }
+
 
 void print_point(int count){
 
@@ -411,6 +413,7 @@ void print_point(int count){
     return;
 }
 
+
 bool check21(int count, int ace){
   if(count == 21) return true;
 
@@ -419,10 +422,10 @@ bool check21(int count, int ace){
   return (count+10 == 21);
 }
 
+
 void print_card(int n){
   cout << "-------" << "\n";
   cout << "|     |" << "\n";
-
 
   switch(n){
     case 13:
@@ -444,9 +447,6 @@ void print_card(int n){
       cout << "|  " << n << "  |"<< "\n";
       break;
   }
-  
-
-
 
   cout << "|     |" << "\n";
   cout << "-------" << "\n";
@@ -454,9 +454,11 @@ void print_card(int n){
   return;
 }
 
+
 bool five_card(int s, int count){
   return (s==5 && count<22);
 }
+
 
 char print_end(int n){
   switch(n){
@@ -483,6 +485,7 @@ void print_hand(vector<int> n){
     }  
   }
 }
+
 
 bool rematch(){
   char n = '0';
